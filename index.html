@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ivan Velykyi - Marketing Manager</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #0a0e27;
+            color: #e0e0e0;
+            overflow-x: hidden;
+        }
+
+        .background-container {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 0;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .stars {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+
+        .star {
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+            animation: twinkle 3s infinite;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 1; }
+        }
+
+        .floating-orbs {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+
+        .orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(40px);
+            animation: float 20s infinite ease-in-out;
+        }
+
+        .orb1 {
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(138, 92, 246, 0.4), transparent);
+            top: 10%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .orb2 {
+            width: 250px;
+            height: 250px;
+            background: radial-gradient(circle, rgba(59, 130, 246, 0.4), transparent);
+            top: 50%;
+            right: 10%;
+            animation-delay: 3s;
+        }
+
+        .orb3 {
+            width: 350px;
+            height: 350px;
+            background: radial-gradient(circle, rgba(167, 139, 250, 0.3), transparent);
+            bottom: 10%;
+            left: 30%;
+            animation-delay: 6s;
+        }
+
+        .orb4 {
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, rgba(99, 102, 241, 0.4), transparent);
+            top: 70%;
+            right: 30%;
+            animation-delay: 9s;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translate(0, 0) scale(1);
+            }
+            25% {
+                transform: translate(30px, -30px) scale(1.1);
+            }
+            50% {
+                transform: translate(-20px, 20px) scale(0.9);
+            }
+            75% {
+                transform: translate(20px, 30px) scale(1.05);
+            }
+        }
+
+        .geometric-shapes {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+
+        .shape {
+            position: absolute;
+            opacity: 0.1;
+            animation: rotate 30s infinite linear;
+        }
+
+        .shape.circle {
+            width: 100px;
+            height: 100px;
+            border: 2px solid rgba(138, 92, 246, 0.5);
+            border-radius: 50%;
+            top: 20%;
+            left: 70%;
+        }
+
+        .shape.square {
+            width: 80px;
+            height: 80px;
+            border: 2px solid rgba(59, 130, 246, 0.5);
+            top: 60%;
+            left: 15%;
+            animation-delay: 5s;
+        }
+
+        .shape.triangle {
+            width: 0;
+            height: 0;
+            border-left: 50px solid transparent;
+            border-right: 50px solid transparent;
+            border-bottom: 87px solid rgba(167, 139, 250, 0.3);
+            top: 80%;
+            right: 20%;
+            animation-delay: 10s;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .dots-pattern {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+
+        .dot {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: rgba(138, 92, 246, 0.3);
+            border-radius: 50%;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        header {
+            background: rgba(17, 24, 39, 0.8);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(138, 92, 246, 0.2);
+            border-radius: 30px;
+            padding: 60px;
+            margin: 40px 0;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5), 0 0 40px rgba(138, 92, 246, 0.1);
+            animation: slideDown 0.8s ease-out;
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .profile-photo {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #8b5cf6 0%, #3b82f6 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 80px;
+            color: white;
+            font-weight: bold;
+            box-shadow: 0 0 60px rgba(138, 92, 246, 0.6), 0 10px 30px rgba(0, 0, 0, 0.5);
+            animation: pulse 2s infinite;
+            flex-shrink: 0;
+            border: 3px solid rgba(138, 92, 246, 0.5);
+            overflow: hidden;
+        }
+
+        .profile-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+                box-shadow: 0 0 60px rgba(138, 92, 246, 0.6), 0 10px 30px rgba(0, 0, 0, 0.5);
+            }
+            50% {
+                transform: scale(1.05);
+                box-shadow: 0 0 80px rgba(138, 92, 246, 0.8), 0 10px 40px rgba(0, 0, 0, 0.5);
+            }
+        }
+
+        .header-content {
+            flex: 1;
+        }
+
+        h1 {
+            font-size: 3.5em;
+            background: linear-gradient(135deg, #8b5cf6 0%, #3b82f6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 10px;
+            animation: fadeIn 1s ease-out 0.3s both;
+        }
+
+        .subtitle {
+            font-size: 1.8em;
+            color: #a5b4fc;
+            margin-bottom: 20px;
+            animation: fadeIn 1s ease-out 0.5s both;
+        }
+
+        .contact-links {
+            display: flex;
+            gap: 20px;
+            margin-top: 20px;
+            animation: fadeIn 1s ease-out 0.7s both;
+        }
+
+        .contact-link {
+            padding: 12px 24px;
+            background: linear-gradient(135deg, #8b5cf6 0%, #3b82f6 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(138, 92, 246, 0.4);
+            border: 1px solid rgba(138, 92, 246, 0.3);
+        }
+
+        .contact-link:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 25px rgba(138, 92, 246, 0.6);
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .section {
+            background: rgba(17, 24, 39, 0.8);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(138, 92, 246, 0.2);
+            border-radius: 25px;
+            padding: 40px;
+            margin: 30px 0;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5), 0 0 30px rgba(138, 92, 246, 0.05);
+            animation: fadeInUp 0.8s ease-out both;
+        }
+
+        .section:nth-child(2) { animation-delay: 0.2s; }
+        .section:nth-child(3) { animation-delay: 0.3s; }
+        .section:nth-child(4) { animation-delay: 0.4s; }
+        .section:nth-child(5) { animation-delay: 0.5s; }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        h2 {
+            font-size: 2em;
+            color: #a78bfa;
+            margin-bottom: 25px;
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(135deg, #8b5cf6 0%, #3b82f6 100%);
+            border-radius: 2px;
+            box-shadow: 0 0 10px rgba(138, 92, 246, 0.5);
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .skill-card {
+            background: rgba(30, 41, 59, 0.6);
+            border: 1px solid rgba(138, 92, 246, 0.2);
+            padding: 25px;
+            border-radius: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(138, 92, 246, 0.3);
+            border-color: rgba(138, 92, 246, 0.5);
+        }
+
+        .skill-card h3 {
+            color: #8b5cf6;
+            margin-bottom: 15px;
+            font-size: 1.3em;
+        }
+
+        .experience-item {
+            margin-bottom: 35px;
+            padding: 25px;
+            background: rgba(30, 41, 59, 0.6);
+            border: 1px solid rgba(138, 92, 246, 0.2);
+            border-radius: 15px;
+            border-left: 5px solid #8b5cf6;
+            transition: all 0.3s ease;
+        }
+
+        .experience-item:hover {
+            transform: translateX(5px);
+            box-shadow: 0 5px 20px rgba(138, 92, 246, 0.2);
+            border-left-color: #3b82f6;
+        }
+
+        .experience-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .job-title {
+            font-size: 1.5em;
+            color: #a78bfa;
+            font-weight: bold;
+        }
+
+        .company {
+            font-size: 1.2em;
+            color: #7c3aed;
+            margin-top: 5px;
+        }
+
+        .duration {
+            color: #94a3b8;
+            font-style: italic;
+        }
+
+        ul {
+            margin-left: 20px;
+            margin-top: 15px;
+        }
+
+        li {
+            margin-bottom: 10px;
+            line-height: 1.6;
+            color: #cbd5e1;
+        }
+
+        .summary {
+            font-size: 1.2em;
+            line-height: 1.8;
+            color: #cbd5e1;
+        }
+
+        .language-tags {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+
+        .language-tag {
+            background: linear-gradient(135deg, #8b5cf6 0%, #3b82f6 100%);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-weight: 500;
+            box-shadow: 0 4px 15px rgba(138, 92, 246, 0.3);
+        }
+
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                padding: 40px 30px;
+                text-align: center;
+            }
+
+            h1 {
+                font-size: 2.5em;
+            }
+
+            .subtitle {
+                font-size: 1.3em;
+            }
+
+            .contact-links {
+                flex-direction: column;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="background-container">
+        <div class="stars" id="stars"></div>
+        <div class="floating-orbs">
+            <div class="orb orb1"></div>
+            <div class="orb orb2"></div>
+            <div class="orb orb3"></div>
+            <div class="orb orb4"></div>
+        </div>
+        <div class="geometric-shapes">
+            <div class="shape circle"></div>
+            <div class="shape square"></div>
+            <div class="shape triangle"></div>
+        </div>
+        <div class="dots-pattern" id="dots"></div>
+    </div>
+
+    <div class="container">
+        <header>
+            <div class="profile-photo">
+                <img src="./me.jpg" alt="Ivan Velykyi" onerror="this.style.display='none'; this.parentElement.innerHTML='IV';">
+            </div>
+            <div class="header-content">
+                <h1>Ivan Velykyi</h1>
+                <div class="subtitle">Marketing Manager</div>
+                <div class="contact-links">
+                    <a href="mailto:ivn.veliky@gmail.com" class="contact-link">📧 Email</a>
+                    <a href="https://t.me/eevan_it" class="contact-link">💬 Telegram</a>
+                </div>
+            </div>
+        </header>
+
+        <div class="section">
+            <h2>Professional Summary</h2>
+            <p class="summary">
+                Results-driven Marketing Manager with 2+ years of experience in affiliate marketing, media buying, and partner management, plus 4 years in software development. Proven track record in lead generation, paid user acquisition, and international negotiations. Experienced in managing Facebook Ads campaigns, optimizing traffic sources, and driving measurable growth in iGaming and crypto verticals.
+            </p>
+        </div>
+
+        <div class="section">
+            <h2>Core Competencies</h2>
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <h3>Marketing & Growth</h3>
+                    <ul>
+                        <li>Affiliate Marketing & Partner Management</li>
+                        <li>Media Buying (Facebook Ads)</li>
+                        <li>Lead Generation</li>
+                        <li>Performance Marketing (CPA, CPL, CAC)</li>
+                    </ul>
+                </div>
+                <div class="skill-card">
+                    <h3>Technical & Tools</h3>
+                    <ul>
+                        <li>AI: ChatGPT, Claude, Perplexity</li>
+                        <li>Analytics: Google Sheets, KPI Monitoring</li>
+                        <li>Development: Python, JS, .NET, HTML/CSS</li>
+                        <li>Google Workspace, MS Office</li>
+                    </ul>
+                </div>
+                <div class="skill-card">
+                    <h3>Soft Skills</h3>
+                    <ul>
+                        <li>International Negotiations</li>
+                        <li>Cross-functional Leadership</li>
+                        <li>Strategic Planning</li>
+                        <li>Data-Driven Decision Making</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Professional Experience</h2>
+            
+            <div class="experience-item">
+                <div class="experience-header">
+                    <div>
+                        <div class="job-title">Marketing Manager</div>
+                        <div class="company">WhyKingz - International iGaming Brands</div>
+                    </div>
+                    <div class="duration">Nov 2024 – Sep 2025</div>
+                </div>
+                <ul>
+                    <li>Identified, evaluated, and onboarded new traffic partners and affiliates across international markets</li>
+                    <li>Managed paid user acquisition campaigns as Media Buyer, primarily via Facebook Ads</li>
+                    <li>Collaborated with Design and Product teams to develop high-converting ad creatives</li>
+                    <li>Monitored campaign performance, budgets, and key KPIs to maximize ROI</li>
+                </ul>
+            </div>
+
+            <div class="experience-item">
+                <div class="experience-header">
+                    <div>
+                        <div class="job-title">Affiliate Manager</div>
+                        <div class="company">CMaffs - Crypto Affiliate Network</div>
+                    </div>
+                    <div class="duration">Oct 2023 – Oct 2024</div>
+                </div>
+                <ul>
+                    <li>Led lead generation initiatives and conducted international negotiations</li>
+                    <li>Managed and optimized internet traffic sources with data-driven analysis</li>
+                    <li>Developed and launched separate project with partners in new verticals</li>
+                    <li>Worked with CPA and CPL pricing models across international markets</li>
+                </ul>
+            </div>
+
+            <div class="experience-item">
+                <div class="experience-header">
+                    <div>
+                        <div class="job-title">Project Manager</div>
+                        <div class="company">IntellDetect - Sports Analytics</div>
+                    </div>
+                    <div class="duration">May 2023 – Oct 2023</div>
+                </div>
+                <ul>
+                    <li>Led coordination of hockey statistics gathering and analysis project</li>
+                    <li>Managed multidisciplinary team for timely data collection</li>
+                </ul>
+            </div>
+
+            <div class="experience-item">
+                <div class="experience-header">
+                    <div>
+                        <div class="job-title">Middle Software Engineer</div>
+                        <div class="company">GlobalLogic - Medical Enterprise Systems</div>
+                    </div>
+                    <div class="duration">2019 – 2023</div>
+                </div>
+                <ul>
+                    <li>Developed comprehensive medical enterprise web-based system</li>
+                    <li>Technologies: .NET Core, Angular, SQL, TypeScript, MSSQL</li>
+                    <li>Utilized Agile/Scrum methodology for project execution</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Education & Languages</h2>
+            <div class="experience-item">
+                <div class="job-title">Bachelor of Science in System Programming</div>
+                <div class="company">Kharkiv Aerospace University "KhAI"</div>
+                <div class="duration">2016 – 2020</div>
+            </div>
+            <div class="language-tags">
+                <div class="language-tag">🇬🇧 English - Advanced</div>
+                <div class="language-tag">🇺🇦 Ukrainian - Native</div>
+                <div class="language-tag">🇷🇺 Russian - Native</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Generate stars
+        const starsContainer = document.getElementById('stars');
+        for (let i = 0; i < 100; i++) {
+            const star = document.createElement('div');
+            star.className = 'star';
+            star.style.width = Math.random() * 3 + 1 + 'px';
+            star.style.height = star.style.width;
+            star.style.left = Math.random() * 100 + '%';
+            star.style.top = Math.random() * 100 + '%';
+            star.style.animationDelay = Math.random() * 3 + 's';
+            starsContainer.appendChild(star);
+        }
+
+        // Generate dots pattern
+        const dotsContainer = document.getElementById('dots');
+        for (let i = 0; i < 50; i++) {
+            const dot = document.createElement('div');
+            dot.className = 'dot';
+            dot.style.left = Math.random() * 100 + '%';
+            dot.style.top = Math.random() * 100 + '%';
+            dotsContainer.appendChild(dot);
+        }
+    </script>
+</body>
+</html>
